@@ -1,39 +1,40 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-import { Request, RequestHandler, Response } from "express"
-import { StatusCodes } from "http-status-codes";
+import { Request, Response } from "express"
 import * as yup from 'yup'
 
+import { validation } from "../../shared/middleware";
+
+// * CIDADE
+// Schema do Body
 interface ICidade {
     nome?: string;
     estado?: string;
 }
-
+// Schema da Validação do Body
 const bodyValidation: yup.Schema<ICidade> = yup.object().shape({
     nome: yup.string().required(),
-    estado: yup.string().required()
+    estado: yup.string().required().max(2)
 })
 
-// Middleware
-export const createBodyValidator : RequestHandler = async (req, res, next) => {
-    const DATA = req.body
-    try {
-        await bodyValidation.validate(DATA, { abortEarly: false })
-        return next();
-    }
-    catch (err) {
-        const yupError = err as yup.ValidationError
-        const errors: Record<string, string> = {}
-
-        yupError.inner.forEach(error => {
-            if (!error.path) return
-            errors[error.path] = error.message
-        })
-
-        return res.status(StatusCodes.BAD_REQUEST).json({errors})
-    }
+// * FILTER
+// Schema do Filter
+interface IFilter {
+    filter?: string;
 }
+// Schema da Validação do Filter
+const fiterValidation: yup.Schema<IFilter> = yup.object().shape({
+    filter: yup.string()
+})
 
-// Criar Cidade
+
+//* Validação para todas as propriedades da controller
+export const createValidation = validation((getSchema) => ({
+    body: getSchema(bodyValidation),
+    query: getSchema(fiterValidation)
+}));
+
+
+//* Criar Cidade
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     const DATA = req.body
     return res.send(DATA)
