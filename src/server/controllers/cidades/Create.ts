@@ -1,4 +1,5 @@
-import { Request, Response } from "express"
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+import { Request, RequestHandler, Response } from "express"
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup'
 
@@ -12,13 +13,12 @@ const bodyValidation: yup.Schema<ICidade> = yup.object().shape({
     estado: yup.string().required()
 })
 
-// Criar Cidade
-export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
+// Middleware
+export const createBodyValidator : RequestHandler = async (req, res, next) => {
     const DATA = req.body
-    let validatedData: ICidade | undefined = undefined
-
     try {
-        validatedData = await bodyValidation.validate(DATA, { abortEarly: false })
+        await bodyValidation.validate(DATA, { abortEarly: false })
+        return next();
     }
     catch (err) {
         const yupError = err as yup.ValidationError
@@ -29,10 +29,12 @@ export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
             errors[error.path] = error.message
         })
 
-
         return res.status(StatusCodes.BAD_REQUEST).json({errors})
     }
+}
 
-    console.log(validatedData)
-    return res.send(validatedData)
+// Criar Cidade
+export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
+    const DATA = req.body
+    return res.send(DATA)
 }
