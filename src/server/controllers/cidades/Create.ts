@@ -4,27 +4,33 @@ import * as yup from 'yup'
 
 interface ICidade {
     nome?: string;
+    estado?: string;
 }
 
-const bodyValidation: yup.Schema<ICidade> =  yup.object().shape({
-    nome: yup.string().required()
+const bodyValidation: yup.Schema<ICidade> = yup.object().shape({
+    nome: yup.string().required(),
+    estado: yup.string().required()
 })
 
 // Criar Cidade
-export const create = async (req: Request<{},{},ICidade>, res: Response) => {
+export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     const DATA = req.body
-    let validatedData : ICidade | undefined = undefined
+    let validatedData: ICidade | undefined = undefined
 
     try {
-        await bodyValidation.validate(DATA)
+        validatedData = await bodyValidation.validate(DATA, { abortEarly: false })
     }
-    catch (error) {
-        const yupError = error as yup.ValidationError
-        return res.status(StatusCodes.BAD_REQUEST).json({
-            errors: {
-                default: yupError.message
-            }
+    catch (err) {
+        const yupError = err as yup.ValidationError
+        const errors: Record<string, string> = {}
+
+        yupError.inner.forEach(error => {
+            if (!error.path) return
+            errors[error.path] = error.message
         })
+
+
+        return res.status(StatusCodes.BAD_REQUEST).json({errors})
     }
 
     console.log(validatedData)
