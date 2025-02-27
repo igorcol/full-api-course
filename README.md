@@ -8,7 +8,7 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 - **Express**: Fast, unopinionated, minimalist web framework for Node.js.
 - **TypeScript**: Typed superset of JavaScript that compiles to plain JavaScript.
 - **Yup**: JavaScript schema builder for value parsing and validation.
-- **Jest**: JavaScript testing framework with a focus on simplicity.
+- **Jest**: A JavaScript testing framework focused on simplicity.
 
 ## Project Structure
 
