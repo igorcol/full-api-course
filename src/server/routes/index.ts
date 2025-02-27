@@ -10,18 +10,15 @@ router.get('/', (req, res) => {
 })
 
 // ============= ROUTES ============= 
-router.get('/cidades', // * GET ALL CIDADES
-    CidadesController.getAllValidation,
-    CidadesController.getAll
-)
+// * GET ALL CIDADES
+router.get('/cidades',  CidadesController.getAllValidation, CidadesController.getAll)
 
-router.get('/cidades/:id', // * GET BY ID
-    CidadesController.getByIdValidation,
-    CidadesController.getById
-)
+// * GET BY ID 
+router.get('/cidades/:id', CidadesController.getByIdValidation, CidadesController.getById)
 
-router.post('/cidades', // * POST CIDADES
-    CidadesController.createValidation, 
-    CidadesController.create
-)
+// * UPDATE BY ID 
+router.put('/cidades/:id', CidadesController.updateByIdValidation, CidadesController.updateById)
+
+// * POST CIDADES 
+router.post('/cidades',CidadesController.createValidation,  CidadesController.create)
 //  ================================= 
