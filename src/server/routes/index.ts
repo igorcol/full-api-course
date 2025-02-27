@@ -10,9 +10,14 @@ router.get('/', (req, res) => {
 })
 
 // ============= ROUTES ============= 
-router.get('/cidades', // * GET CIDADES
+router.get('/cidades', // * GET ALL CIDADES
     CidadesController.getAllValidation,
     CidadesController.getAll
+)
+
+router.get('/cidades/:id', // * GET BY ID
+    CidadesController.getByIdValidation,
+    CidadesController.getById
 )
 
 router.post('/cidades', // * POST CIDADES
