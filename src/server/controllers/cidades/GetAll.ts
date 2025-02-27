@@ -12,16 +12,16 @@ interface IQueryProps {
     filter?: string;
 }
 // Schema da Validação do Query
-// const queryValidation: yup.ObjectSchema<IQueryProps> = yup.object().shape({})
+const queryValidation: yup.ObjectSchema<IQueryProps> = yup.object().shape({
+        page: yup.number().moreThan(0),
+        limit: yup.number().moreThan(0),
+        filter: yup.string()
+})
 
 
 //* Validação para todas as propriedades da controller
 export const getAllValidation = validation((getSchema) => ({
-    query: getSchema<IQueryProps>(yup.object().shape({
-        page: yup.number().moreThan(0),
-        limit: yup.number().moreThan(0),
-        filter: yup.string()
-    }))
+    query: getSchema(queryValidation)
 }));
 
 
