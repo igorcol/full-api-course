@@ -18,6 +18,7 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 - **src/server/database/**: - empty -
 - **src/server/routes/**: Contains the route definitions for the API endpoints.
 - **src/server/shared/**: Contains shared utilities and helper functions.
+- **/tests**: Jest Tests.
 
 ## Getting Started
 
@@ -39,7 +40,7 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 
 4. **Run tests**:
     ```sh
-    npm test | not implemented yet 
+    npm test 
     ```
 
 ## License
