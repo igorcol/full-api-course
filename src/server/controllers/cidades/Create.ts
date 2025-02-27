@@ -9,12 +9,10 @@ import { StatusCodes } from "http-status-codes";
 // Schema do Body
 interface ICidade {
     nome: string;
-    estado: string;
 }
 // Schema da Validação do Body
 const bodyValidation: yup.ObjectSchema<ICidade> = yup.object().shape({
-    nome: yup.string().required(),
-    estado: yup.string().required().max(2).min(2)
+    nome: yup.string().required()
 })
 
 
