@@ -15,9 +15,9 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 ```
 📦 project-root
 ├── 📂 src
-│   ├── 📄 index.ts        # Setup server on the correct port
+│   ├── 🟦 index.ts         # Setup server on the correct port
 │   ├── 📂 server
-│   │   ├── 📄 index.ts     # Main server configuration and initialization
+│   │   ├── 🟦 index.ts     # Main server configuration and initialization
 │   │   ├── 📂 controllers  # Handles API logic
 │   │   ├── 📂 database     # (empty)
 │   │   ├── 📂 routes       # Defines API endpoints
