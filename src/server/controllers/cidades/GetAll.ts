@@ -27,7 +27,16 @@ export const getAllValidation = validation((getSchema) => ({
 
 //* Criar Cidade
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
+    res.setHeader('access-control-expose-headers', 'x-total-count');
+    res.setHeader('x-total-count', 1) // ! DADO MOCKADO, REMOVER APÓS IMPLEMENTAÇÃO DO DB
+
     const DATA = req.query
     console.log('GET | Cidades:', DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('GET CIDADES | NÃO IMPLEMENTADO')
+
+    return res.status(StatusCodes.OK).json([
+        {
+            id: 1,
+            nome: 'Sorocaba', // ! DADO MOCKADO, REMOVER APÓS IMPLEMENTAÇÃO DO DB
+        }
+    ])
 }
