@@ -12,15 +12,18 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 
 ## Project Structure
 
-- **src/**: Contains the source code of the application.
-- **tests/**: Contains the test cases for the application.
-- **README.TXT**: Project documentation.
+- **src/**: Setup server on the correct port.
+- **src/server/**: Contains the server configuration and initialization files.
+- **src/server/controllers/**: Contains the controller files that handle the API logic.
+- **src/server/database/**: - empty -
+- **src/server/routes/**: Contains the route definitions for the API endpoints.
+- **src/server/shared/**: Contains shared utilities and helper functions.
 
 ## Getting Started
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/your-username/full-api-course.git
+    git clone https://github.com/igorcol/full-api-course.git
     cd full-api-course
     ```
 
@@ -36,20 +39,9 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 
 4. **Run tests**:
     ```sh
-    npm test
+    npm test | not implemented yet 
     ```
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit a pull request for any improvements.
 
 ## License
 
 This project is licensed under the MIT License.
-
-REST API
-- NODE
-- EXPRESS
-- TYPESCRIPT
-- YUP
-- Tests with JEST
