@@ -12,13 +12,18 @@ This project is a REST API built using Node.js, Express, and TypeScript. It incl
 
 ## Project Structure
 
-- **src/**: Setup server on the correct port.
-- **src/server/**: Contains the server configuration and initialization files.
-- **src/server/controllers/**: Contains the controller files that handle the API logic.
-- **src/server/database/**: - empty -
-- **src/server/routes/**: Contains the route definitions for the API endpoints.
-- **src/server/shared/**: Contains shared utilities and helper functions.
-- **/tests**: Jest Tests.
+```
+📦 project-root
+├── 📂 src
+│   ├── 📄 index.ts        # Setup server on the correct port
+│   ├── 📂 server
+│   │   ├── 📄 index.ts     # Main server configuration and initialization
+│   │   ├── 📂 controllers  # Handles API logic
+│   │   ├── 📂 database     # (empty)
+│   │   ├── 📂 routes       # Defines API endpoints
+│   │   ├── 📂 shared       # Shared utilities and helper functions
+├── 📂 tests                # Jest test files
+```
 
 ## Getting Started
 
