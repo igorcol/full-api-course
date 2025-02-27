@@ -37,5 +37,6 @@ export const createValidation = validation((getSchema) => ({
 //* Criar Cidade
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     const DATA = req.body
+    console.log('POST | Cidade Criada:', DATA)
     return res.send(DATA)
 }

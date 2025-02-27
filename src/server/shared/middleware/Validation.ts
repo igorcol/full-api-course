@@ -15,6 +15,7 @@ type TGetAllSchemas = (getSchema : TGetSchema) => Partial<TAllSchemas> // Retorn
 
 type TValidation = (getAllSchemas:TGetAllSchemas) => RequestHandler;
 
+// * VALIDAÇÃO
 /**
  * Middleware de validação genérico.
  * 
@@ -22,14 +23,14 @@ type TValidation = (getAllSchemas:TGetAllSchemas) => RequestHandler;
  * @param scheme - O esquema Yup que será usado para validação.
  * @returns RequestHandler - Middleware de validação.
  * 
- */
+*/
 export const validation: TValidation = (getAllSchemas) => (req, res, next) => {
     const schemas = getAllSchemas((schema) => schema);
 
-    const errorsResult: Record<string, Record<string, string>> = {}
+    const errorsResult: Record<string, Record<string, string>> = {} // Lista de erro
 
     // Logica de validação e erros
-    Object.entries(schemas).forEach(async ([key, schema]) =>  {
+    Object.entries(schemas).forEach(([key, schema]) =>  {
         try {
             const DATA = req[key as TProperty]
             schema.validateSync(DATA, { abortEarly: false })
