@@ -1,4 +1,4 @@
-# REST API Project
+# 🌐 REST API Project
 
 This project is a REST API built using Node.js, Express, and TypeScript. 
 
@@ -6,7 +6,7 @@ It was developed as part of a learning journey to deepen my understanding of RES
 
  Through this project, I aimed to explore best practices in backend development, improve my TypeScript skills, and experiment with data validation and testing methodologies.
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - **Node.js**: JavaScript runtime built on Chrome's V8 JavaScript engine.
 - **Express**: Fast, unopinionated, minimalist web framework for Node.js.
@@ -14,7 +14,7 @@ It was developed as part of a learning journey to deepen my understanding of RES
 - **Yup**: JavaScript schema builder for value parsing and validation.
 - **Jest**: A JavaScript testing framework focused on simplicity.
 
-## Project Structure
+## 🗄️ Project Structure
 
 ```
 📦 project-root
@@ -29,7 +29,7 @@ It was developed as part of a learning journey to deepen my understanding of RES
 ├── 📂 tests                # Jest test files
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 1. **Clone the repository**:
     ```sh
@@ -52,6 +52,6 @@ It was developed as part of a learning journey to deepen my understanding of RES
     npm test 
     ```
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License.
