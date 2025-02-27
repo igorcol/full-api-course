@@ -1,6 +1,10 @@
 # REST API Project
 
-This project is a REST API built using Node.js, Express, and TypeScript. It includes data validation with Yup and testing with Jest.
+This project is a REST API built using Node.js, Express, and TypeScript. 
+
+It was developed as part of a learning journey to deepen my understanding of REST APIs, TypeScript, and database integration.
+
+ Through this project, I aimed to explore best practices in backend development, improve my TypeScript skills, and experiment with data validation and testing methodologies.
 
 ## Technologies Used
 
