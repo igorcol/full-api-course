@@ -25,5 +25,5 @@ export const getByIdValidation = validation((getSchema) => ({
 export const getById = async (req: Request<{}, {}, IParamProps>, res: Response) => {
     const DATA = req.params
     console.log('GET | Cidades:', DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('GET CIDADES | NÃO IMPLEMENTADO')
+    return res.status(StatusCodes.NOT_IMPLEMENTED).send('GET BY ID | NÃO IMPLEMENTADO')
 }

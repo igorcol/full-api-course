@@ -34,5 +34,5 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
     const BODY_DATA = req.body
     console.log('UPDATE | Cidades params:', PARAM_DATA)
     console.log('UPDATE | Cidades body:', BODY_DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('GET CIDADES | NÃO IMPLEMENTADO')
+    return res.status(StatusCodes.NOT_IMPLEMENTED).send('UPDATE BY ID | NÃO IMPLEMENTADO')
 }
