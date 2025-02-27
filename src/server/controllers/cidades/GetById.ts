@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { Request, Response } from "express"
 import * as yup from 'yup'
 
@@ -8,7 +7,7 @@ import { StatusCodes } from "http-status-codes";
 
 // Schema do Query
 interface IParamProps {
-    id: number;
+    id?: number;
 }
 // Schema da Validação do Query
 const queryValidation: yup.ObjectSchema<IParamProps> = yup.object().shape({
@@ -22,8 +21,18 @@ export const getByIdValidation = validation((getSchema) => ({
 }));
 
 //* Criar Cidade
-export const getById = async (req: Request<{}, {}, IParamProps>, res: Response) => {
+export const getById = async (req: Request<IParamProps>, res: Response) => {
     const DATA = req.params
     console.log('GET | Cidades:', DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('GET BY ID | NÃO IMPLEMENTADO')
+
+    if(Number(DATA.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: {
+            default: 'Registro não encontrado.'
+        }
+    })
+
+    return res.status(StatusCodes.OK).json({
+        id: DATA.id,
+        nome: 'Sorocaba'
+    })
 }
