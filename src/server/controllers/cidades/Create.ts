@@ -26,5 +26,5 @@ export const createValidation = validation((getSchema) => ({
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
     const DATA = req.body
     console.log('POST | Cidade:', DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('NÃO IMPLEMENTADO')
+    return res.status(StatusCodes.CREATED).json(1) // ! teste mockado
 }

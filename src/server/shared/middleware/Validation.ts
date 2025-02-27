@@ -52,7 +52,7 @@ export const validation: TValidation = (getAllSchemas) => (req, res, next) => {
         return next()
     }
     else { // Se tiver erros
-        return res.status(StatusCodes.BAD_REQUEST).json({ erros: errorsResult })
+        return res.status(StatusCodes.BAD_REQUEST).json({ errors: errorsResult })
     }
 
 ;}
