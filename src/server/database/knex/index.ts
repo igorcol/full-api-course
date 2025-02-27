@@ -1,5 +1,5 @@
 import knex from "knex"
-import { development, production, test } from './Enviroments'
+import { development, production, test } from './Enviroment'
 
 const NODE_ENV = process.env.NODE_ENV
 
