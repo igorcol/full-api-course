@@ -34,5 +34,12 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
     const BODY_DATA = req.body
     console.log('UPDATE | Cidades params:', PARAM_DATA)
     console.log('UPDATE | Cidades body:', BODY_DATA)
-    return res.status(StatusCodes.NOT_IMPLEMENTED).send('UPDATE BY ID | NÃO IMPLEMENTADO')
+
+    if (Number(PARAM_DATA.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: {
+            default: 'Registro não encontrado.' //! MOCKADO, REMOVER AO IMPLEMENTAR DB
+        }
+    })
+
+    return res.status(StatusCodes.NO_CONTENT).send();
 }
