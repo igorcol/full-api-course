@@ -20,5 +20,8 @@ router.get('/cidades/:id', CidadesController.getByIdValidation, CidadesControlle
 router.put('/cidades/:id', CidadesController.updateByIdValidation, CidadesController.updateById)
 
 // * POST CIDADES 
-router.post('/cidades',CidadesController.createValidation,  CidadesController.create)
+router.post('/cidades', CidadesController.createValidation,  CidadesController.create)
+
+// * DELETE BY ID 
+router.delete('/cidades/:id', CidadesController.deleteByIdValidation,  CidadesController.deleteById)
 //  ================================= 
