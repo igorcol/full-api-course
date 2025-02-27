@@ -9,8 +9,14 @@ router.get('/', (req, res) => {
     return res.send('✅ Api OK')
 })
 
-// ROUTES
-router.post('/cidades', 
+// ============= ROUTES ============= 
+router.get('/cidades', // * GET CIDADES
+    CidadesController.getAllValidation,
+    CidadesController.getAll
+)
+
+router.post('/cidades', // * POST CIDADES
     CidadesController.createValidation, 
     CidadesController.create
 )
+//  ================================= 
