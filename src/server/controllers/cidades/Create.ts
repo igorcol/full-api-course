@@ -4,14 +4,14 @@ import * as yup from 'yup'
 
 import { validation } from "../../shared/middleware";
 import { StatusCodes } from "http-status-codes";
+import { ICidade } from "../../database/models";
 
-// * CIDADE
+// * SCHEMAS
 // Schema do Body
-interface ICidade {
-    nome: string;
-}
+interface IBodyProps extends  Omit<ICidade, 'id'> {}
+
 // Schema da Validação do Body
-const bodyValidation: yup.ObjectSchema<ICidade> = yup.object().shape({
+const bodyValidation: yup.ObjectSchema<IBodyProps> = yup.object().shape({
     nome: yup.string().required()
 })
 

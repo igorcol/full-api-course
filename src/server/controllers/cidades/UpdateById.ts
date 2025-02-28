@@ -4,15 +4,15 @@ import * as yup from 'yup'
 
 import { validation } from "../../shared/middleware";
 import { StatusCodes } from "http-status-codes";
+import { ICidade } from "../../database/models";
 
-
+// * SCHEMAS
 // Schema do Query
 interface IParamProps {
     id?: number;
 }
-interface IBodyProps {
-    nome: string;
-}
+interface IBodyProps extends Omit<ICidade, 'id'> {}
+
 // Schema da Validação do Query
 const paramsValidation: yup.ObjectSchema<IParamProps> = yup.object().shape({
     id: yup.number().integer().required().moreThan(0)
