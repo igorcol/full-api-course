@@ -29,7 +29,7 @@ export const development: Knex.Config = {
 // * TEST
 export const test: Knex.Config = {
     ...development,
-    connection: ':memory'
+    connection: ':memory:'
 };
 
 // * PRODUCTION
