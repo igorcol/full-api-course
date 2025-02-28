@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { validation } from "../../shared/middleware";
 import { StatusCodes } from "http-status-codes";
 import { ICidade } from "../../database/models";
+import { CidadesProvider } from "../../database/providers/cidades";
 
 // * SCHEMAS
 // Schema do Query
@@ -28,18 +29,30 @@ export const updateByIdValidation = validation((getSchema) => ({
     params: getSchema(paramsValidation)
 }));
 
-//* Criar Cidade
+//* Update By Id
 export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res: Response) => {
     const PARAM_DATA = req.params
     const BODY_DATA = req.body
     console.log('UPDATE | Cidades params:', PARAM_DATA)
     console.log('UPDATE | Cidades body:', BODY_DATA)
 
-    if (Number(PARAM_DATA.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        errors: {
-            default: 'Registro não encontrado.' //! MOCKADO, REMOVER AO IMPLEMENTAR DB
-        }
-    })
+    if (!PARAM_DATA.id) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            errors: {
+                default: 'O parâmetro ID precisa ser informado.'
+            }
+        })
+    }
 
-    return res.status(StatusCodes.NO_CONTENT).send();
+    const result = await CidadesProvider.updateById(PARAM_DATA.id, BODY_DATA)
+
+    if (result instanceof Error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        })
+    }
+
+    return res.status(StatusCodes.NO_CONTENT).json(result);
 }

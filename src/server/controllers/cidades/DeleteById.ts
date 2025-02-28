@@ -4,6 +4,7 @@ import * as yup from 'yup'
 
 import { validation } from "../../shared/middleware";
 import { StatusCodes } from "http-status-codes";
+import { CidadesProvider } from "../../database/providers/cidades";
 
 
 // Schema do Query
@@ -21,16 +22,28 @@ export const deleteByIdValidation = validation((getSchema) => ({
     params: getSchema(deleteValidation)
 }));
 
-//* Criar Cidade
+//* Deletar Cidade
 export const deleteById = async (req: Request<IParamProps>, res: Response) => {
     const DATA = req.params
     console.log('DELETE BY ID | Cidade:', DATA)
 
-    if (Number(DATA.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ //! REMOVER APÓS IMPLEMENTAÇÃO DO DB
-        errors: {
-            default: 'Registro não encontrado.'
-        }
-    });
+    if (!DATA.id) {
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            errors: {
+                default: 'O parâmetro ID precisa ser informado.'
+            }
+        })
+    }
 
-    return res.status(StatusCodes.NO_CONTENT).send()
+    const result = await CidadesProvider.deleteById(DATA.id);
+
+    if( result instanceof Error ) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        })
+    }
+
+    return res.status(StatusCodes.NO_CONTENT).send();
 }

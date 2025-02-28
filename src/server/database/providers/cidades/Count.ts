@@ -5,7 +5,7 @@ import { Knex } from "../../knex";
 
 
 // Faz uma contagem de quantos registro ainda restam no banco
-export const count = async (filter: ''): Promise<number | Error> => {
+export const count = async (filter: string): Promise<number | Error> => {
     try {
         const [{ count }] = await Knex(ETableNames.cidade)
             .where('nome', 'like', `%${filter}%`)
