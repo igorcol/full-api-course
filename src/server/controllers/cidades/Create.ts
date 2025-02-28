@@ -13,7 +13,7 @@ interface IBodyProps extends  Omit<ICidade, 'id'> {}
 
 // Schema da Validação do Body
 const bodyValidation: yup.ObjectSchema<IBodyProps> = yup.object().shape({
-    nome: yup.string().required()
+    nome: yup.string().required().max(100)
 })
 
 
