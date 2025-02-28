@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import { validation } from "../../shared/middleware";
 import { StatusCodes } from "http-status-codes";
 import { ICidade } from "../../database/models";
+import { CidadesProvider } from "../../database/providers/cidades";
 
 // * SCHEMAS
 // Schema do Body
@@ -24,7 +25,20 @@ export const createValidation = validation((getSchema) => ({
 
 //* Criar Cidade
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
+
     const DATA = req.body
-    console.log('POST | Cidade:', DATA)
-    return res.status(StatusCodes.CREATED).json(1) // ! teste mockado
+    console.log('-> POST | Cidade:', DATA)
+
+    const result = await CidadesProvider.create(DATA);
+
+    if (result instanceof Error) {
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        })
+    }
+
+    return res.status(StatusCodes.CREATED).json(result) 
+
 }
