@@ -1,9 +1,9 @@
-import { count } from './Count'
+import * as count  from './Count'
 import * as create from './Create'
-import { deleteById } from './deleteById'
-import { getAll } from './getAll'
-import { getById } from './getById'
-import { updateById } from './updateById'
+import * as deleteById  from './deleteById'
+import * as getAll  from './getAll'
+import * as getById  from './getById'
+import * as updateById  from './updateById'
 
 export const CidadesProvider = {
     ...create,
