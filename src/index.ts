@@ -20,7 +20,10 @@ const startServer = () => {
 // Faz as migrations antes de iniciar o server em produção
 if (process.env.IS_LOCALHOST !== 'true') {
     Knex.migrate.latest().then(() => {
-        startServer();
+        Knex.seed.run().then(() => {
+            startServer()    
+        })
+        .catch(console.log);
     })
     .catch(console.log);
 }
